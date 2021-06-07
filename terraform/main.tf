@@ -3,7 +3,7 @@ terraform {
     bucket         = "santechx-tf-backend"
     key            = "terraform"
     region         = "us-east-2"
-#    dynamodb_table = "santechx-tf-lock"
+    dynamodb_table = "santechx-tf-lock"
   }
   required_providers {
     aws = {
