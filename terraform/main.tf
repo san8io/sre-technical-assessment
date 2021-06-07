@@ -1,19 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket         = var.bucket_name
-    key            = "terraform"
-    region         = var.region
-    dynamodb_table = var.db_table_name
-  }
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.27"
-    }
-  }
-  required_version = ">= 0.14.9"
-}
-
 provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key

@@ -42,11 +42,4 @@ variable "instance_name" {
   default = "DefaultAppName"
 }
 
-variable "bucket_name" {
-  default = "santechx-tf-backend"
-}
-
-variable "db_table_name" {
-  default = "santechx-tf-lock"
-}
 
