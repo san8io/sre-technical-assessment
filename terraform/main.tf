@@ -1,9 +1,29 @@
-module "networkModule" {
-    source			= "./modules/network"
- 	access_key		= "${var.access_key}"
-	secret_key		= "${var.secret_key}"
-	region			= "${var.region}"
-	environment_tag = "${var.environment_tag}"
+provider "aws" {
+  access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
+  region     = "${var.region}"
+}
+
+data "aws_ami" "ec2-ami" {
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+  owners  = ["self"]
+  filter {
+    name   = "tag:Name"
+    values = ["Packer-Ansible"]
+  }
+
+  most_recent = true
+}
+
+data "terraform_remote_state" "network" {
+  backend = "local"
+
+  config {
+    path = "./network/terraform.tfstate"
+  }
 }
 
 module "securityGroupModule" {
@@ -11,7 +31,7 @@ module "securityGroupModule" {
  	access_key		= "${var.access_key}"
 	secret_key		= "${var.secret_key}"
 	region			= "${var.region}"
-	vpc_id			= "${module.networkModule.vpc_id}"
+	vpc_id			= "${data.terraform_remote_state.network.vpc_id}"
 	environment_tag = "${var.environment_tag}"
 }
 
@@ -20,8 +40,10 @@ module "instanceModule" {
 	access_key 			= "${var.access_key}"
  	secret_key 			= "${var.secret_key}"
  	region     			= "${var.region}"
- 	vpc_id 				= "${module.networkModule.vpc_id}"
-	subnet_public_id	="${module.networkModule.public_subnets[0]}"
+ 	instance_ami		= "${data.aws_ami.ec2-ami.id}"
+ 	vpc_id 				= "${data.terraform_remote_state.network.vpc_id}"
+	subnet_public_id	= "${data.terraform_remote_state.network.public_subnets[0]}"
+	key_pair_name		= "${data.terraform_remote_state.network.ec2keyName}"
 	key_pair_name		="${module.networkModule.ec2keyName}"
 	security_group_ids 	= ["${module.securityGroupModule.sg_22}", "${module.securityGroupModule.sg_80}"]
 	environment_tag 	= "${var.environment_tag}"
