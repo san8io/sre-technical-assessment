@@ -1,3 +1,3 @@
 output "instance_eip" {
-  value = "${aws_eip.testInstanceEip.public_ip}"
+  value = aws_eip.testInstanceEip.public_ip
 }
