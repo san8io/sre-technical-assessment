@@ -4,7 +4,6 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-#resources
 resource "aws_vpc" "vpc" {
   cidr_block = "${var.cidr_block_range}"
   enable_dns_support   = true
