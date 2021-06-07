@@ -20,23 +20,22 @@
         mode: 0644
 
     - name: Creates directory
-      file: 
-        path: "/var/www/miteshsharma.com"
+      file:
+        path: "/var/www/santechx.com"
         state: directory
 
     - name: Copy static files
       copy:
         src: "./files/static_website/"
-        dest: "/var/www/miteshsharma.com/"
+        dest: "/var/www/santechx.com/"
         mode: 0644
 
     - name: Update static nginx config
-      copy: 
+      copy:
         src: "./files/static_website.conf"
-        dest: "/etc/nginx/conf.d/miteshsharma.com.conf"
+        dest: "/etc/nginx/conf.d/santechx.com.conf"
         mode: 0644
 
     - name: Restart Nginx
       service: name=nginx state=restarted
       become: yes
-
