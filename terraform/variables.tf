@@ -27,7 +27,7 @@ variable "public_key_path" {
 }
 
 variable "ami_id" {
-  default = "ami-0cf31d971a3ca20d6"
+  default = "ami-0d563aeddd4be7fff"
 }
 
 variable "instance_type" {
