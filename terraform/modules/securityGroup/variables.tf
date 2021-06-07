@@ -6,9 +6,9 @@ variable "region" {
 
 variable "vpc_id" {
   description = "VPC id"
-  default = ""
+  default     = ""
 }
 variable "environment_tag" {
   description = "Environment tag"
-  default = ""
+  default     = "Development"
 }

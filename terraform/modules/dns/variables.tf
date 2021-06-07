@@ -5,21 +5,21 @@ variable "region" {
 }
 variable "domain_name" {
   description = "Domain name"
-  default = ""
+  default     = ""
 }
 variable "aRecords" {
-  type = "list"
+  type    = list(string)
   default = []
 }
 variable "cnameRecords" {
-  type = "list"
+  type    = list(string)
   default = []
 }
 variable "ttl" {
   description = "time to live"
-  default = 300
+  default     = 300
 }
 variable "environment_tag" {
   description = "Environment tag"
-  default = ""
+  default     = "Development"
 }

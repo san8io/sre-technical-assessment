@@ -7,30 +7,30 @@ variable "region" {
 }
 variable "vpc_id" {
   description = "VPC id"
-  default = ""
+  default     = ""
 }
 variable "subnet_public_id" {
   description = "VPC public subnet id"
-  default = ""
+  default     = ""
 }
 variable "security_group_ids" {
   description = "EC2 ssh security group"
-  type = "list"
-  default = []
+  type        = list(string)
+  default     = []
 }
 variable "environment_tag" {
   description = "Environment tag"
-  default = ""
+  default     = "Development"
 }
 variable "key_pair_name" {
   description = "EC2 Key pair name"
-  default = ""
+  default     = ""
 }
 variable "instance_ami" {
   description = "EC2 instance ami"
-  default = "ami-0cf31d971a3ca20d6"
+  default     = "ami-0cf31d971a3ca20d6"
 }
 variable "instance_type" {
   description = "EC2 instance type"
-  default = "t2.micro"
+  default     = "t2.micro"
 }
