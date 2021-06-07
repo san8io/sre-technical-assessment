@@ -6,7 +6,7 @@
         "ssh_username": "ec2-user",
         "base_ami": "ami-0303c7b2e7066b60d",
         "instance_type": "t2.micro",
-        "subnet_id": "subnet-0553e12f46221b5b7"
+        "subnet_id": "subnet-084d80adac48a1ce6"
     },
     "builders": [
         {

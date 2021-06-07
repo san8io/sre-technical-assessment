@@ -44,7 +44,6 @@ module "instanceModule" {
  	vpc_id 				= "${data.terraform_remote_state.network.vpc_id}"
 	subnet_public_id	= "${data.terraform_remote_state.network.public_subnets[0]}"
 	key_pair_name		= "${data.terraform_remote_state.network.ec2keyName}"
-	key_pair_name		="${module.networkModule.ec2keyName}"
 	security_group_ids 	= ["${module.securityGroupModule.sg_22}", "${module.securityGroupModule.sg_80}"]
 	environment_tag 	= "${var.environment_tag}"
 }

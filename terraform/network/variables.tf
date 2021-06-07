@@ -26,3 +26,4 @@ variable "public_key_path" {
   description = "Public key path"
   default     = "~/.ssh/id_rsa.pub"
 }
+
