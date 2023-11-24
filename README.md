@@ -11,4 +11,3 @@
 * Nota 1: Utilizar access_key y secret_key para poder crear los recursos en AWS.
 * Nota 2: Cambiar el dominio segun se requiera en la configuracion del sitio web nginx en la carpeta 'ansible' y en las variables del modulo 'dns'.
 * Dominio utilizado: santechx.com
-![DNS configuration](/images/go_daddy.png)
